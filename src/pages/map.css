@@ -1,0 +1,211 @@
+.map-wrap {
+  position: relative;
+  height: calc(100vh - var(--header-h));
+  height: calc(100dvh - var(--header-h));
+  overflow: hidden;
+}
+.map-wrap.is-fs {
+  height: 100vh;
+  background: var(--ink);
+}
+.map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.map-svg:active {
+  cursor: grabbing;
+}
+.map-svg .band.dahuang {
+  fill-opacity: 1;
+}
+.map-svg .frame {
+  stroke: var(--gold);
+  stroke-opacity: 0.35;
+  stroke-width: 1.5;
+}
+.map-svg .frame.thin {
+  stroke-opacity: 0.2;
+  stroke-dasharray: 4 6;
+}
+.map-svg .shan {
+  stroke: #7be07b;
+  stroke-opacity: 0.35;
+  stroke-width: 1.2;
+  fill-opacity: 1;
+  cursor: pointer;
+  transition: stroke-opacity 0.25s;
+}
+.map-svg .shan:hover,
+.map-svg .shan.on {
+  stroke-opacity: 0.9;
+}
+.map-svg .band-hit {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.25s;
+}
+.map-svg .band-hit:hover {
+  fill: rgba(232, 192, 104, 0.03);
+}
+.map-svg .band-hit.on {
+  fill: rgba(232, 192, 104, 0.07);
+}
+.region-label {
+  fill: var(--gold);
+  fill-opacity: 0.8;
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-anchor: middle;
+  letter-spacing: 8px;
+  pointer-events: none;
+}
+.region-label.shan {
+  fill: #9be69b;
+  font-size: 22px;
+  letter-spacing: 5px;
+}
+.region-label.hainei {
+  fill: #8fd3ff;
+  font-size: 22px;
+}
+.rose {
+  pointer-events: none;
+}
+.rose circle {
+  fill: none;
+  stroke: var(--cinnabar);
+  stroke-opacity: 0.6;
+}
+.rose circle.dashed {
+  stroke-dasharray: 2 4;
+}
+.rose path {
+  fill: var(--cinnabar);
+  fill-opacity: 0.7;
+}
+.rose text {
+  fill: var(--cinnabar);
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.map-center-glyph {
+  fill: #7be07b;
+  fill-opacity: 0.06;
+  font-family: var(--font-display);
+  font-size: 300px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+.mk {
+  cursor: pointer;
+}
+.mk .mk-glow {
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 0.25s;
+}
+.mk.hover .mk-glow,
+.mk.on .mk-glow {
+  opacity: 0.55;
+}
+.mk > * {
+  transition: transform 0.25s;
+}
+.mk.hover > *,
+.mk.on > * {
+  transform: scale(1.18);
+}
+.mk-label {
+  fill: var(--text);
+  font-family: var(--font-title);
+  font-size: 16px;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #07060b;
+  stroke-width: 4px;
+  pointer-events: none;
+}
+.mk-glyph {
+  font-family: var(--font-display);
+  font-size: 28px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.map-topbar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+.map-topbar > * {
+  pointer-events: auto;
+}
+.map-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.map-heading .display {
+  font-size: 34px;
+}
+.map-heading small {
+  letter-spacing: 2px;
+}
+.map-regions {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 4;
+  width: 170px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(12, 10, 18, 0.88);
+  max-height: calc(100% - 90px);
+  overflow-y: auto;
+}
+.map-region-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-family: var(--font-title);
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.map-region-btn small {
+  color: var(--dim);
+}
+.map-region-btn:hover {
+  color: var(--gold-hi);
+}
+.map-region-btn.on {
+  color: var(--ink);
+  background: var(--gold);
+}
+.map-region-btn.on small {
+  color: var(--ink);
+}
+.drawer-rel.map-li {
+  grid-template-columns: 34px auto 1fr;
+}
+.drawer-rel.map-li .art {
+  width: 34px;
+  height: 34px;
+}

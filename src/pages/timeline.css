@@ -1,0 +1,250 @@
+.tl-h {
+  width: min(1240px, 100% - 40px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.river-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 0 18px;
+  scroll-behavior: smooth;
+  mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+.river {
+  position: relative;
+  display: flex;
+  padding: 0 60px;
+  width: max-content;
+  height: 640px;
+}
+.river-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 330px;
+  height: 4px;
+  background: linear-gradient(90deg, #8fb3ff, #ffb38f, #ffd36b, #6be0c2, #ff7a6b, #c99bff, #7be07b);
+  box-shadow: 0 0 24px rgba(232, 192, 104, 0.45);
+  border-radius: 4px;
+}
+.river-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  background-size: 300px 100%;
+  background-repeat: no-repeat;
+  animation: flow 6s linear infinite;
+}
+@keyframes flow {
+  from {
+    background-position: -300px 0;
+  }
+  to {
+    background-position: calc(100% + 300px) 0;
+  }
+}
+.river-era {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  border-left: 1px dashed color-mix(in srgb, var(--c) 40%, transparent);
+}
+.river-era-head {
+  position: absolute;
+  top: 300px;
+  left: 14px;
+  transform: translateY(-100%);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;
+  z-index: 2;
+  padding: 2px 10px;
+  border-radius: 8px;
+  background: rgba(7, 6, 11, 0.85);
+}
+.river-num {
+  font-size: 22px;
+  color: var(--c);
+}
+.river-name {
+  font-size: 26px;
+  color: var(--c);
+}
+.river-era-head small {
+  color: var(--dim);
+  font-size: 12px;
+}
+.river-events {
+  display: flex;
+  gap: 14px;
+  height: 100%;
+  padding-left: 230px;
+}
+.river-era:first-child .river-events {
+  padding-left: 240px;
+}
+.river-ev {
+  position: relative;
+  width: 230px;
+  height: 100%;
+}
+.river-dot {
+  position: absolute;
+  left: 50%;
+  top: 324px;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 16px var(--c);
+  border: 3px solid var(--ink);
+  z-index: 2;
+}
+.river-ev::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  background: color-mix(in srgb, var(--c) 50%, transparent);
+}
+.river-ev.up::before {
+  top: 280px;
+  height: 46px;
+}
+.river-ev.down::before {
+  top: 338px;
+  height: 46px;
+}
+.river-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 12px 14px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.river-ev.up .river-card {
+  bottom: calc(100% - 280px);
+}
+.river-ev.down .river-card {
+  top: 384px;
+}
+.river-card:hover {
+  border-color: color-mix(in srgb, var(--c) 60%, transparent);
+  transform: translateY(-3px);
+}
+.river-art {
+  height: 90px;
+  margin-bottom: 6px;
+}
+.river-art .art {
+  height: 100%;
+}
+.river-card b {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: var(--gold-hi);
+}
+.river-card p {
+  margin: 4px 0 6px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.river-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 12px;
+}
+.river-people a {
+  color: var(--c);
+}
+.river-people a:hover {
+  text-decoration: underline;
+}
+
+/* books axis */
+.books {
+  position: relative;
+  margin: 0 30px;
+}
+.dyn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--line);
+  background: rgba(232, 192, 104, 0.025);
+}
+.dyn.alt {
+  background: rgba(201, 155, 255, 0.025);
+}
+.dyn span {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--gold);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+.books-axis {
+  position: absolute;
+  top: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.tick {
+  position: absolute;
+  top: 66px;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.book {
+  position: absolute;
+  transform: translateX(-8px);
+  display: flex;
+  flex-direction: column;
+  padding: 4px 10px 4px 14px;
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(90deg, rgba(232, 192, 104, 0.1), transparent);
+  border-radius: 0 8px 8px 0;
+  white-space: nowrap;
+  transition: background 0.25s;
+}
+.book:hover {
+  background: linear-gradient(90deg, rgba(232, 192, 104, 0.25), transparent);
+}
+.book-pin {
+  position: absolute;
+  left: -6px;
+  top: -8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+.book b {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--gold-hi);
+}
+.book small {
+  font-size: 11px;
+  color: var(--dim);
+}
